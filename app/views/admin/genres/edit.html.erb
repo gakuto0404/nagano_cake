@@ -2,8 +2,8 @@
   <div class="alert-secondary">ジャンル編集</div>
   <div class="row">
    <div class="col-md-4">
-    <%= form_with @genre do |f| %>
-      <h3><%= f.text_field :name %></h3>
+    <%= form_with model: @genre, url: admin_genre_path(@genre)do |f| %>
+      <%= f.text_field :name %>
       <%= f.submit '更新', class: "btn btn-primary" %>
       <p></p>
     <% end %>

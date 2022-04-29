@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'orders/edit'
   end
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]

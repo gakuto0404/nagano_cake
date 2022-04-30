@@ -15,24 +15,19 @@
       <% @items.each do |item| %>
         <tbody>
           <tr>
-            <td><%= item.id %></td>
-            <td><%= link_to item.name, admin_item_path(item.id) %></td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
-            <td>
-              <% if item.is_active == true %>
-                <td>販売中</td>
-              <% else %>
-                <td>販売停止中</td>
-              <% end %>
-            </td>
+            <td><%= item.id %></td>   <!-- 商品ID -->
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>  <!-- 商品名のリンク -->
+            <td><%= item.price %></td>  <!-- 価格 -->
+            <td><%= item.genre.name %></td>  <!-- ジャンル -->
+            <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
+              <td>販売中</td>
+            <% else %>
+              <td>販売停止中</td>
+            <% end %>
           </tr>
         </tbody>
       <% end %>
+      <%= paginate @items, class: "paginate" %>  <!-- ページネーション -->
     </table>
-    <%= paginate @items, class: "paginate" %>
   </div>
 </div>
-
-
-

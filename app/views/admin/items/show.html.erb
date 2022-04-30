@@ -11,11 +11,11 @@
       </tr>
       <tr>
         <th>商品説明</th>
-        <td><%= @item.description %></td>
+        <td><%= @item.introduction %></td>
       </tr>
       <tr>
         <th>ジャンル</th>
-        <td><%= @genre.name %></td>
+        <td><%= @item.genre.name %></td>
       </tr>
       <tr>
         <th>税抜価格</th>
@@ -23,9 +23,15 @@
       </tr>
       <tr>
         <th>販売ステータス</th>
-        <td><%= @item.status %></td>
+        <td>
+          <% if @item.is_active == true %>
+            <td>販売中</td>
+          <% else %>
+            <td>販売停止中</td>
+          <% end %>
+        </td>
       </tr>
-      <%= f.submit '編集する', class: "btn btn-success" %>
+      <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
     </div>
   </div>
 </div>

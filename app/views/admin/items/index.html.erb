@@ -1,5 +1,6 @@
 <div class="container">
   <div class="alert-secondary">商品一覧</div>
+  <%= link_to "+",  new_admin_item_path, class: "fas fa-plus-circle fa-2x" %> <!-- FontAwesomeを使う(今は＋) -->
   <div class="row">
     <table class="table">
       <thead class="thead-light">
@@ -17,8 +18,14 @@
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
             <td><%= item.price %></td>
-            <td><%= ganre.name %></td>
-            <td><%= item.status %></td>
+            <td><%= item.genre.name %></td>
+            <td>
+              <% if item.is_active == true %>
+                <td>販売中</td>
+              <% else %>
+                <td>販売停止中</td>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       <% end %>
@@ -28,4 +35,4 @@
 </div>
 
 
-  
+

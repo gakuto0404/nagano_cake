@@ -1,2 +1,50 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-4">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ジャンル検索</th>
+          </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+          <tbody>
+            <tr>
+              <td><%= genre.name %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-8 col-offset-1 mt-4">
+      <section class="main-visual">
+        <%= image_tag 'ケーキの資料', size: "800x400" %>
+        <div class="mv-content">
+          <h2 class="mv-title">ようこそ、ながのCAKEへ！</h2>
+          <p class="mv-text">
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </section>
+    </div>
+      <section class="new-items col-md-8 mt-4">
+        <h2 class="new-items-title"><strong>新着商品</strong></h2>
+        <div class="row">
+          <% @items.each do |item| %>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <%= image_tag item.image %>
+                  <div class="card-body">
+                    <%= item.name %><br>
+                    ￥<%= item.price %>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </section>
+      <div><%= link_to "すべての商品を見る＞", public_items_index_path %></div>
+  </div>
+</div>

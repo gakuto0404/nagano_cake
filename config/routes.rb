@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  
+  
+  # 管理者用
   namespace :admin do
     get 'orders/edit'
   end
@@ -15,30 +17,32 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
+  
+  # 管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
 
+  # 顧客用
   namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
+    resources :addresses, only: [:index, :edit]
   end
   namespace :public do
-    get 'orders/new'
-    get 'orders/log'
-    get 'orders/thanx'
-    get 'orders/index'
-    get 'orders/show'
+    resources :orders, only: [:index, :new, :show, :log, :thanx]
   end
   namespace :public do
     get 'cart_items/index'
   end
   namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/quit'
+    get 'items/index'
   end
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :addresses, only: [:show, :edit, :quit]
+  end
+  namespace :public do
+    resources :addresses, only: [:index, :show]
   end
   namespace :public do
     get 'homes/top'
@@ -52,11 +56,6 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  # 管理者用
-  # URL /admin/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
 
   #root to: "homes#top"
 

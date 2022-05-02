@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="alert-secondary">会員一覧</div>
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <h4 class="col-md-6"><span class="title alert-secondary">会員一覧</span></h4>
+    </div>
+  </div>
   <div class="row">
     <table class="table">
       <thead class="thead-light">
@@ -13,16 +17,14 @@
       <% @customers.each do |c| %>
         <tbody>
           <tr>
-            <td><%= c.id %></td>　　　　　　　　　<!-- ↓フルネームの書き方もっといいやり方がありそう↓ -->
-            <td><%= link_to c.last_name, admin_customer_path(c.id) %><%= link_to c.first_name, admin_customer_path(c.id) %></td>
+            <td><%= c.id %></td>
+            <td><%= link_to c.full_name, admin_customer_path(c.id) %></td>
             <td><%= c.email %></td>
-            <td>
-              <% if c.is_active == true %>
-                <td>有効</td>
-              <% else %>
-                <td>退会</td>
-              <% end %>
-            </td>
+            <% if c.is_active == true %>
+              <td><font color=#32cd32><strong>有効</strong></font></td>
+            <% else %>
+              <td><font color=#c0c0c0><strong>退会</strong></font></td>
+            <% end %>
           </tr>
         </tbody>
       <% end %>

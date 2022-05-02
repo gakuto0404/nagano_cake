@@ -1,4 +1,5 @@
-class Admin::CustomersController < ApplicationController　#顧客側をやらないと進めない気がする
+class Admin::CustomersController < ApplicationController
+  #顧客側をやらないと進めない気がする
   def index
     @customers = Customer.page(params[:page])
   end
@@ -23,6 +24,6 @@ class Admin::CustomersController < ApplicationController　#顧客側をやら�
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :last_name_kana, :email, :encrypted_password, :postal_code, :address, :telephone_number, :is_active)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :postal_code, :address, :telephone_number, :is_active)
   end
 end

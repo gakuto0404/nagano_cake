@@ -1,47 +1,66 @@
 <div class="container">
-  <div class="alert-secondary">
-    <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <h4 class="col-md-6"><span class="title alert-secondary"><%= @customer.full_name %>さんの会員詳細</span></h4>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class='mx-auto col-md-12 mt-3'>
+
+      <!--会員ID-->
       <div class="form-group row">
-          <%= f.label "会員ID" %>
-          <%= @customer.id %>
-        </div>
-        <div class="form-group row">
-          <%= f.label "氏名" %>
-          <%= @customer.last_name %>    <!-- 苗字 -->
-          <%= @customer.first_name %>    <!-- 名前 -->
-        </div>
-        <div class="form-group row">
-          <%= f.label "フリガナ" %>
-          <%= @customer.last_name_kana %>    <!-- 苗字カタカナ -->
-          <%= @customer.first_name_kana %>    <!-- 名前カタカナ -->
-        </div>
-        <div class="form-group row">
-          <%= f.label "郵便番号" %>
-          <%= @customer.ostal_code %>
-        </div>
-        <div class="form-group row">
-          <%= f.label "住所" %>
-          <%= @customer.address %>
-        </div>
-        <div class="form-group row">
-          <%= f.label "電話番号" %>
-          <%= @customer.telephone_number %>
-        </div>
-        <div class="form-group row">
-          <%= f.label "メールアドレス" %>
-          <%= @customer.email %>
-        </div>
-        <div class="form-group row">
-          <%= f.label "会員ステータス" %>
-          <% if @customer.is_active == true %>  <!-- if文での会員ステータス表示 -->
-            <td>有効</td>
-          <% else %>
-            <td>無効</td>
-          <% end %>
-        </div>
+        <label class="col-md-3 col-form-label">会員ID</label>
+        <%= @customer.id %>
+      </div>
+
+      <!--名前-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">氏名</label>
+        <%= @customer.full_name %>
+      </div>
+
+      <!--フリガナ-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">フリガナ</label>
+        <%= @customer.full_name_kana %>
+      </div>
+
+      <!--郵便番号-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">郵便番号</label>
+        <%= @customer.postal_code %>
+      </div>
+
+      <!--住所-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">住所</label>
+        <%= @customer.address %>
+      </div>
+
+      <!--電話番号-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">電話番号</label>
+        <%= @customer.telephone_number %>
+      </div>
+
+      <!--メールアドレス-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">メールアドレス</label>
+        <%= @customer.email %>
+      </div>
+
+      <!--会員ステータス-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">会員ステータス</label>
+        <% if @customer.is_active == true %>  <!-- if文での会員ステータス表示 -->
+          <td><font color=#32cd32><strong>有効</strong></font></td>
+        <% else %>
+          <td><font color=#c0c0c0><strong>退会</strong></font></td>
+        <% end %>
+      </div>
+      <div class="action ml-5">
+        <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-action btn-success col-md-2 offset-md-2 mt-5" %>
+      </div>
     </div>
   </div>
 </div>

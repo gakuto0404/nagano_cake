@@ -1,46 +1,70 @@
 <div class="container">
-  <div class="alert-secondary">     <!-- ↓↓↓フルネームの書き方もっといいやり方がありそう -->
-    <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
-　</div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-8 mt-5">
+      <h4 class="col-md-6"><span class="title alert-secondary"><%= @customer.full_name %>さんの会員情報編集</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class='mx-auto col-md-12 mt-3'>
       <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+      <!-- エラーメッセージを出したい　例:render "public/shared/error_messages", resource: resource -->
+
+      　<!--会員ID-->
         <div class="form-group row">
-          <%= f.label "会員ID" %>
+          <%= f.label "会員ID", class: "col-md-3 col-form-label" %>
           <%= @customer.id %>
         </div>
+
+        <!--名前-->
         <div class="form-group row">
-          <%= f.label "氏名" %>
-          <%= f.text_field :last_name %>    <!-- 苗字 -->
-          <%= f.text_field :first_name %>    <!-- 名前 -->
+          <%= f.label "氏名", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :last_name, class: "col-sm-3" %>
+          <%= f.text_field :first_name, class: "col-sm-3" %>
         </div>
+
+        <!--フリガナ-->
         <div class="form-group row">
-          <%= f.label "フリガナ" %>
-          <%= f.text_field :last_name_kana %>    <!-- 苗字カタカナ -->
-          <%= f.text_field :first_name_kana %>    <!-- 名前カタカナ -->
+          <%= f.label "フリガナ", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :last_name_kana, class: "col-sm-3" %>
+          <%= f.text_field :first_name_kana, class: "col-sm-3" %>
         </div>
+
+        <!--郵便番号-->
         <div class="form-group row">
-          <%= f.label "郵便番号" %>
-          <%= f.text_field :postal_code %>
+          <%= f.label "郵便番号", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :postal_code, class: "col-sm-3" %>
         </div>
+
+        <!--住所-->
         <div class="form-group row">
-          <%= f.label "住所" %>
-          <%= f.text_field :address %>
+          <%= f.label "住所", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :address, class: "col-sm-7" %>
         </div>
+
+        <!--電話番号-->
         <div class="form-group row">
-          <%= f.label "電話番号" %>
-          <%= f.text_field :telephone_number %>
+          <%= f.label "電話番号", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :telephone_number, class: "col-sm-3" %>
         </div>
+
+        <!--パスワード-->
         <div class="form-group row">
-          <%= f.label "メールアドレス" %>
-          <%= f.text_field :email %>
+          <%= f.label "メールアドレス", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :email, class: "col-sm-3" %>
         </div>
+
+        <!--会員ステータス-->
         <div class="form-group row">
-          <%= f.label "会員ステータス" %>
+          <%= f.label "会員ステータス", class: "col-md-3 col-form-label" %>
           <%= f.radio_button :is_active, :true %>
           <%= f.label :is_active, "有効" %>
           <%= f.radio_button :is_active, :false %>
           <%= f.label :is_active, "無効" %>
+        </div>
+
+        <!--新規登録ボタン-->
+        <div class="action ml-3">
+          <%= f.submit "変更を保存", class: "btn btn-action btn-success col-md-3 offset-md-3 mt-5" %>
         </div>
       <% end %>
     </div>

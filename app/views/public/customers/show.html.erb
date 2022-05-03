@@ -1,2 +1,59 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <h4 class="col-md-6 mb-3"><span class="title alert-secondary">マイページ</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <h4 class="col-md-2 mt-3"><strong>登録情報</strong></h4>
+    <%= link_to "編集する", edit_public_customer_path(@customer), class: "btn btn-action btn-success col-md-2 mt-3" %>
+  </div>
+  <div class="row">
+    <table class="table mt-3">
+
+      <!--名前-->
+      <tr>
+        <th class="border border-dark alert-secondary col-md-3">氏名</th>
+        <th class="border border-dark"><%= @customer.full_name %></th>
+      </tr>
+
+      <!--カナ-->
+      <tr>
+        <th class="border border-dark alert-secondary col-md-3">カナ</th>
+        <th class="border border-dark"><%= @customer.full_name_kana %></th>
+      </tr>
+
+      <!--郵便番号-->
+      <tr>
+        <th class="border border-dark alert-secondary col-md-3">郵便番号</th>
+        <th class="border border-dark"><%= @customer.postal_code %></th>
+      </tr>
+
+      <!--住所-->
+      <tr>
+        <th class="border border-dark alert-secondary col-md-3">住所</th>
+        <th class="border border-dark"><%= @customer.address %></th>
+      </tr>
+
+      <!--電話番号-->
+      <tr>
+        <th class="border border-dark alert-secondary col-md-3">電話番号</th>
+        <th class="border border-dark"><%= @customer.telephone_number %></th>
+      </tr>
+
+      <!--メールアドレス-->
+      <tr>
+        <th class="border border-dark alert-secondary col-md-3">メールアドレス</th>
+        <th class="border border-dark"><%= @customer.email %></th>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <h4 class="col-md-2 mt-3"><strong>配送先</strong></h4>
+    <%= link_to "一覧を見る", public_addresses_path(@customer), class: "btn btn-action btn-primary col-md-2 mt-3" %>
+  </div>
+  <div class="row">
+    <h4 class="col-md-2 mt-3"><strong>注文履歴</strong></h4>
+    <%= link_to "一覧を見る", public_orders_path(@customer), class: "btn btn-action btn-primary col-md-2 mt-3" %>
+  </div>
+</div>

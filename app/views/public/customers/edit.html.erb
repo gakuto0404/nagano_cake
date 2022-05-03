@@ -1,2 +1,58 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <h4 class="col-md-6"><span class="title alert-secondary">会員情報編集</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class='mx-auto col-md-12 mt-3'>
+      <%= form_with model: @customer, url: public_customer_path(@customer) do |f| %>
+      <!-- エラーメッセージを出したい　例:render "public/shared/error_messages", resource: resource -->
+
+        <!--名前-->
+        <div class="form-group row">
+          <%= f.label "氏名", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :last_name, class: "col-sm-3" %>
+          <%= f.text_field :first_name, class: "col-sm-3" %>
+        </div>
+
+        <!--フリガナ-->
+        <div class="form-group row">
+          <%= f.label "フリガナ", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :last_name_kana, class: "col-sm-3" %>
+          <%= f.text_field :first_name_kana, class: "col-sm-3" %>
+        </div>
+
+        <!--郵便番号-->
+        <div class="form-group row">
+          <%= f.label "郵便番号", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :postal_code, class: "col-sm-3" %>
+        </div>
+
+        <!--住所-->
+        <div class="form-group row">
+          <%= f.label "住所", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :address, class: "col-sm-7" %>
+        </div>
+
+        <!--電話番号-->
+        <div class="form-group row">
+          <%= f.label "電話番号", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :telephone_number, class: "col-sm-3" %>
+        </div>
+
+        <!--メールアドレス-->
+        <div class="form-group row">
+          <%= f.label "メールアドレス", class: "col-md-3 col-form-label" %>
+          <%= f.text_field :email, class: "col-sm-3" %>
+        </div>
+
+        <!--変更ボタン-->
+        <div class="action ml-3">
+          <%= f.submit "編集内容を保存", class: "btn btn-action btn-success col-md-3 offset-md-3 mt-5" %>
+          <%= link_to "退会する", public_customers_quit_path(@customer), class: "btn btn-action btn-danger col-md-2 offset-md-2 mt-5" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

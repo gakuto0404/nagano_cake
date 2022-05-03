@@ -42,15 +42,17 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'customers/quit'
+    # 論理削除用のルーティング
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :customers, only: [:show, :edit]
   end
   namespace :public do
     resources :addresses, only: [:index, :show]
   end
   namespace :public do
-    get 'homes/top'
     get 'homes/about'
   end
+  root to: 'public/homes#top'
 
   # 顧客用
   # URL /customers/sign_in ...

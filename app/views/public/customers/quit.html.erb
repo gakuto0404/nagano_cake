@@ -1,2 +1,21 @@
-<h1>Public::Customers#quit</h1>
-<p>Find me in app/views/public/customers/quit.html.erb</p>
+<div class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <section class="about-content">
+          <h4 class="my-5"><strong>本当に退会しますか？</strong></h4>
+          <h5 class="about-text">
+            退会すると、会員登録情報や<br>
+            これまでの購入履歴が閲覧できなくなります。<br>
+            退会する場合は、「退会する」をクリックしてください。<br>
+          </h5>
+          <%= link_to "退会しない", public_customer_path(@customer), class: "btn btn-action btn-primary col-md-2 mt-5 mr-3" %>
+          <%= link_to "退会する", public_withdrawal_path(@customer), class: "btn btn-action btn-danger col-md-2 mt-5 ml-3", method: :patch %>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+退会後　同じメールアドレスを使って新規登録できない
+ログインもできない
+データベースは削除しない

@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :addresses
 
-  # is_deletedがfalseならtrueを返すようにしている
+  # is_activeがtrueならfalseを返すようにしている
   def active_for_authentication?
     super && (is_active == true)
   end

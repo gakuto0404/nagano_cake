@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    get 'orders/edit'
+    resources :orders, only: [:edit, :update]
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     get 'homes/top'
+  end
+  namespace :admin do
+    resources :order_details, only: [:update]
   end
 
   # 管理者用
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
     get 'cart_items/index'
   end
   namespace :public do
-    get 'items/index'
+    resources :items, only: [:index, :show]
   end
   namespace :public do
     get 'customers/quit'

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # 顧客用
   namespace :public do
-    resources :addresses, only: [:index, :edit]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   namespace :public do
     get 'orders/log'

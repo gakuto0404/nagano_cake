@@ -10,7 +10,7 @@
             退会する場合は、「退会する」をクリックしてください。<br>
           </h5>
           <%= link_to "退会しない", public_customer_path(@customer), class: "btn btn-action btn-primary col-md-2 mt-5 mr-3" %>
-          <%= link_to "退会する", public_withdrawal_path(@customer), class: "btn btn-action btn-danger col-md-2 mt-5 ml-3", method: :patch %>
+          <%= link_to "退会する", public_withdrawal_path(@customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-action btn-danger col-md-2 mt-5 ml-3" %>
         </section>
       </div>
     </div>

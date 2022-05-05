@@ -1,2 +1,32 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ジャンル検索</th>
+          </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+          <tbody>
+            <tr>
+              <td><%= genre.name %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+    <section class="new-items col-md-4 mt-5">
+      <%= image_tag @item.image, size: "325x225" %>
+    </section>
+    <section class="new-items col-md-5 mt-5">
+      <h3><strong><%= @item.name %></strong></h3>
+      <h5 class="mt-4"><strong><%= @item.introduction %></strong></h5>
+      <div class="row mt-5">
+        <h3><strong>￥<%= @item.price %></strong></h3>
+        <div class="mt-2 ml-2">(税込)</div>
+      </div>
+      
+    </section>
+  </div>
+</div>

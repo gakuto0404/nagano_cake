@@ -16,10 +16,10 @@
         <% end %>
       </table>
     </div>
-    <section class="new-items col-md-8 mt-4">
-      <h2 class="new-items-title"><strong>商品一覧</strong></h2>
+    <section class="new-items col-md-9 mt-4">
+      <h2 class="items-title"><strong>商品一覧</strong></h2>
       <div class="row">
-        <% @items.each do |item| %>
+        <% @items.reverse_each do |item| %>
           <div class="col-md-3">
             <div class="card mb-4 shadow-sm">
               <%= link_to public_item_path(item.id) do %>
@@ -27,7 +27,11 @@
               <% end %>
               <div class="card-body">
                 <%= item.name %><br>
-                ￥<%= item.price %>
+                <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
+                  ￥<%= item.price %>
+                <% else %>
+                  <td>販売停止中</td>
+                <% end %>
               </div>
             </div>
           </div>

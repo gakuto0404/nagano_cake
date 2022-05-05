@@ -38,7 +38,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :new, :show]
   end
   namespace :public do
-    get 'cart_items/index'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/all_destroy'
   end
   namespace :public do
     resources :items, only: [:index, :show]

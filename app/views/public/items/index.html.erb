@@ -21,16 +21,16 @@
       <div class="row">
         <% @items.reverse_each do |item| %>
           <div class="col-md-3">
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4">
               <%= link_to public_item_path(item.id) do %>
                 <%= image_tag item.image %>
               <% end %>
-              <div class="card-body">
+              <div class="body">
                 <%= item.name %><br>
                 <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
-                  ￥<%= item.price %>
+                  ￥<%= item.price %><td><font color=#32cd32><strong class="ml-2">販売中</strong></font></td>
                 <% else %>
-                  <td>販売停止中</td>
+                  ￥<%= item.price %><td><font color=#c0c0c0><strong class="ml-2">販売停止中</strong></font></td>
                 <% end %>
               </div>
             </div>

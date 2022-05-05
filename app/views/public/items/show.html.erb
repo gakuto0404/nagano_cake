@@ -25,8 +25,27 @@
       <div class="row mt-5">
         <h3><strong>￥<%= @item.price %></strong></h3>
         <div class="mt-2 ml-2">(税込)</div>
+        <div class="mt-2">
+          <% if @item.is_active == true %>  <!-- if文でのステータス表示 -->
+            <h5><font color=#32cd32><strong class="ml-2">販売中</strong></font></h5>
+          <% else %>
+            <h5><font color=#c0c0c0><strong class="ml-2">販売停止中</strong></font></h5>
+          <% end %>
+        </div>
       </div>
-      
+      <% if @item.is_active == true %>
+        <%= form_with model: @cart_item, url: public_cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <div class="row">
+            <div class="col">
+              <%= f.select :amount, *[1..15] %>
+            </div>
+            <div class="col">
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </section>
   </div>
 </div>

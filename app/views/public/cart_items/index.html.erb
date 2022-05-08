@@ -1,2 +1,49 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mt-5">
+      <h4 class="col-md-6 mb-3"><span class="title alert-secondary">ショッピングカート</span></h4>
+    </div>
+    <div class="col-md-3 mt-5">
+      <%= link_to 'カートを空にする', public_cart_items_all_destroy_path(@cart_item), method: :delete, "data-confirm" => "本当にカートを空にしますか？" , class: "btn btn-danger ml-2" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class='mx-auto col-md-12 mt-3'>
+      <table class="table table-bordered cart_table">
+        <thead>
+          <tr>
+            <th colspan="3">商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td colspan="3">
+                <%= image_tag cart_item.item.get_profile_image(75, 75) %>
+                <%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price%></td>
+              <td>
+                <%= form_with model: cart_item, url: public_cart_item_path(cart_item), remote: true do |f| %>
+                  <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+                  <div class="col">
+                    <%= f.select :amount, *[1..15], selected: cart_item.amount %>
+                    <%= f.submit "変更", class: "btn btn-success" %>
+                  </div>
+                <% end %>
+              </td>
+              <td><%= cart_item.subtotal%></td>
+              <td>
+                <%= link_to '削除する', public_cart_item_path(cart_item), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger ml-2" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

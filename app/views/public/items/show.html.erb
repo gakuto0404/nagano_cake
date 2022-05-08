@@ -17,7 +17,7 @@
       </table>
     </div>
     <section class="new-items col-md-4 mt-5">
-      <%= image_tag @item.image, size: "325x225" %>
+      <%= image_tag @item.get_profile_image(100, 100) %>
     </section>
     <section class="new-items col-md-5 mt-5">
       <h3><strong><%= @item.name %></strong></h3>
@@ -35,7 +35,7 @@
       </div>
       <% if @item.is_active == true %>
         <%= form_with model: @cart_item, url: public_cart_items_path, local: true do |f| %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.hidden_field :item_id, value: @item.id %>
           <div class="row">
             <div class="col">
               <%= f.select :amount, *[1..15] %>

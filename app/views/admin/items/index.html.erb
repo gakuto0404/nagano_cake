@@ -1,33 +1,41 @@
 <div class="container">
-  <div class="alert-secondary">商品一覧</div>
-  <%= link_to "+",  new_admin_item_path, class: "fas fa-plus-circle fa-2x" %> <!-- FontAwesomeを使う(今は＋) -->
   <div class="row">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">商品ID</th>
-          <th scope="col">商品名</th>
-          <th scope="col">税抜価格</th>
-          <th scope="col">ジャンル</th>
-          <th scope="col">ステータス</th>
-        </tr>
-      </thead>
-      <% @items.each do |item| %>
-        <tbody>
+    <div class="col-md-10 mt-5">
+      <h4 class="col-md-6"><span class="title alert-secondary">商品一覧</span></h4>
+    </div>
+    <div class="col-md-2 mt-5">
+      <%= link_to "+",  new_admin_item_path, class: "fa-2x" %> <!-- FontAwesomeを使う(今は＋) -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-md-11 mt-2">
+      <table class="table">
+        <thead class="thead-light">
           <tr>
-            <td><%= item.id %></td>   <!-- 商品ID -->
-            <td><%= link_to item.name, admin_item_path(item.id) %></td>  <!-- 商品名のリンク -->
-            <td><%= item.price %></td>  <!-- 価格 -->
-            <td><%= item.genre.name %></td>  <!-- ジャンル -->
-            <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
-              <td>販売中</td>
-            <% else %>
-              <td>販売停止中</td>
-            <% end %>
+            <th scope="col">商品ID</th>
+            <th scope="col">商品名</th>
+            <th scope="col">税抜価格</th>
+            <th scope="col">ジャンル</th>
+            <th scope="col">ステータス</th>
           </tr>
-        </tbody>
-      <% end %>
-      <%= paginate @items, class: "paginate" %>  <!-- ページネーション -->
-    </table>
+        </thead>
+        <% @items.each do |item| %>
+          <tbody>
+            <tr>
+              <td><%= item.id %></td>   <!-- 商品ID -->
+              <td><%= link_to item.name, admin_item_path(item.id) %></td>  <!-- 商品名のリンク -->
+              <td><%= item.price %></td>  <!-- 価格 -->
+              <td><%= item.genre.name %></td>  <!-- ジャンル -->
+              <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
+                <td><font color=#32cd32><strong>販売中</strong></font></td>
+              <% else %>
+                <td><font color=#c0c0c0><strong>販売停止中</strong></font></td>
+              <% end %>
+            </tr>
+          </tbody>
+        <% end %>
+        <%= paginate @items, class: "paginate" %>  <!-- ページネーション -->
+      </table>
+    </div>
   </div>
 </div>

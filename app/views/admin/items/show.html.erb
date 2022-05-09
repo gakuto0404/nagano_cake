@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 mt-5">
-      <%= image_tag @item.image, size: "200x200" %>
+      <%= image_tag @item.get_profile_image(300, 300) %><!--サイズ調整する-->
     </div>
     <div class="col-md-8 mt-5">
       <table class="table table-borderless">
@@ -40,9 +40,9 @@
           <tr>
             <th>販売ステータス</th>
             <% if @item.is_active == true %>
-              <td>販売中</td>
+              <td><font color=#32cd32><strong>販売中</strong></font></td>
             <% else %>
-              <td>販売停止中</td>
+              <td><font color=#c0c0c0><strong>販売停止中</strong></font></td>
             <% end %>
           </tr>
         </tbody>

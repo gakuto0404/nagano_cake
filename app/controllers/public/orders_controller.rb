@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
+    @address = current_customer.addresses.all
+    @order = Order.new
   end
 
   def log

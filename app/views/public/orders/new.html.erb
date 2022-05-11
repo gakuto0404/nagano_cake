@@ -28,7 +28,8 @@
         <%= f.radio_button :address_select, 0, checked: true %>
         <%= f.label "ご自身の住所" %>
         <div class="mx-auto col-md-11">
-          <%= f.label "ご自身の住所を表示したい" %>
+          <%= current_customer.owner_address %></br>
+          <%= current_customer.full_name %>
         </div>
       </div>
     </div>

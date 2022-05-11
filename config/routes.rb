@@ -33,9 +33,9 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   namespace :public do
-    get 'orders/log'
+    post 'orders/log'
     get 'orders/thanx'
-    resources :orders, only: [:index, :new, :show]
+    resources :orders, only: [:index, :new, :show, :create]
   end
   namespace :public do
     delete 'cart_items/all_destroy'

@@ -45,9 +45,9 @@
             <div class="body">
               <%= item.name %><br>
               <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
-                ￥<%= item.price %><td><font color=#32cd32><strong class="ml-2">販売中</strong></font></td>
+                ￥<%= item.price.to_s(:delimited) %><td><font color=#32cd32><strong class="ml-2">販売中</strong></font></td>
               <% else %>
-                ￥<%= item.price %><td><font color=#c0c0c0><strong class="ml-2">販売停止中</strong></font></td>
+                ￥<%= item.price.to_s(:delimited) %><td><font color=#c0c0c0><strong class="ml-2">販売停止中</strong></font></td>
               <% end %>
             </div>
           </div>

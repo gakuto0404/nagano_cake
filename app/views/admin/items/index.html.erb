@@ -24,7 +24,7 @@
             <tr>
               <td><%= item.id %></td>   <!-- 商品ID -->
               <td><%= link_to item.name, admin_item_path(item.id) %></td>  <!-- 商品名のリンク -->
-              <td><%= item.price %></td>  <!-- 価格 -->
+              <td><%= item.price.to_s(:delimited) %></td>  <!-- 価格 -->
               <td><%= item.genre.name %></td>  <!-- ジャンル -->
               <% if item.is_active == true %>  <!-- if文でのステータス表示 -->
                 <td><font color=#32cd32><strong>販売中</strong></font></td>

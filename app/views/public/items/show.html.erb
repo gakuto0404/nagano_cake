@@ -23,7 +23,7 @@
       <h3><strong><%= @item.name %></strong></h3>
       <h5 class="mt-4"><strong><%= @item.introduction %></strong></h5>
       <div class="row mt-5">
-        <h3><strong>￥<%= @item.price %></strong></h3>
+        <h3><strong>￥<%= @item.price.to_s(:delimited) %></strong></h3>
         <div class="mt-2 ml-2">(税込)</div>
         <div class="mt-2">
           <% if @item.is_active == true %>  <!-- if文でのステータス表示 -->

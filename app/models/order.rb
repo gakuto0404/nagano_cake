@@ -4,6 +4,10 @@ class Order < ApplicationRecord
   has_many :order_details
 
 
+  def owner_address
+    '〒' + self.postal_code.to_s.insert(3, "-") + ' ' + self.address
+  end
+
   def subtotal
     itme.add_tax_price * amount
   end

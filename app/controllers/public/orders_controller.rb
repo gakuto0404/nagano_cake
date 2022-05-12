@@ -6,8 +6,32 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def log
+  def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    # カート商品
+    cart_items = current_customer.cart_items
+    #請求金額
+    @total = cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @order.total_payment = @total + params[:order][:shipping_cost].to_i
+    if @order.save
+      cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.items_id = cart_item.item.id
+        order_detail.price = cart_item.subtotal.to_s
+        order_detail.amount = cart_item.amount
+        order_detail.order_id = @order.id
+        order_detail.save
+      end
+      cart_items.destroy_all
+      redirect_to public_orders_thanx_path
+    else
+      redirect_to new_public_order_path
+    end
+  end
+
+  def log
+    @order = Order.new
     #配送料
     @order.shipping_cost = 800
     # カート商品

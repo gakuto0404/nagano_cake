@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
     if @order.save
       cart_items.each do |cart_item|
         order_detail = OrderDetail.new
-        order_detail.items_id = cart_item.item.id
+        order_detail.item_id = cart_item.item.id
         order_detail.price = cart_item.subtotal.to_s
         order_detail.amount = cart_item.amount
         order_detail.order_id = @order.id
@@ -63,14 +63,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
+    @total = @order.total_payment - @order.shipping_cost
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :total_payment, :status, :shipping_cost)
   end
 end

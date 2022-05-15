@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # 管理者用
   namespace :admin do
     resources :orders, only: [:edit, :update]
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :order_details, only: [:update]
   end
-
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -41,9 +39,10 @@ Rails.application.routes.draw do
     delete 'cart_items/all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
   end
-  namespace :public do
-    resources :items, only: [:index, :show]
-  end
+
+  get 'items' => 'public/items#index'
+  get 'items/:id' => 'public/items#show'
+
   namespace :public do
     get 'customers/quit'
     # 論理削除用のルーティング
@@ -53,9 +52,9 @@ Rails.application.routes.draw do
   namespace :public do
     resources :addresses, only: [:index, :show]
   end
-  namespace :public do
-    get 'homes/about'
-  end
+
+  get 'homes/about' => 'public/homes#about'
+
   root to: 'public/homes#top'
 
   # 顧客用

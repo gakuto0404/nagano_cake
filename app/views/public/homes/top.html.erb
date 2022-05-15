@@ -1,9 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 mt-4">
-                <%= link_to destroy_customer_session_path, method: :delete do%>
-                  Log out
-                <% end %>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -39,7 +36,7 @@
       <% @items.last(4).reverse_each do |item| %>
         <div class="col-lg-3">
           <div class="lg-4">
-            <%= link_to public_item_path(item.id) do %>
+            <%= link_to items_path(item.id) do %>
               <%= image_tag item.get_profile_image(100, 100) %>
             <% end %>
             <div class="body">
@@ -57,6 +54,6 @@
   </section>
   <div class="row">
     <div class="col-lg-10"></div>
-    <%= link_to "すべての商品を見る＞", public_items_path %>
+    <%= link_to "すべての商品を見る＞", items_path %>
   </div>
 </div>

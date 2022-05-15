@@ -1,24 +1,35 @@
 <div class="container">
-  <div class="alert-secondary">注文履歴一覧</div>
   <div class="row">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">購入日時</th>
-          <th scope="col">購入者</th>
-          <th scope="col">注文個数</th>
-        </tr>
-      </thead>
-      <% @orders.each do |order| %>
-        <tbody>
+    <div class="col-md-8 mt-5">
+      <h4 class="col-md-6"><span class="title alert-secondary">注文履歴一覧</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-md-11 mt-3">
+      <table class="table">
+        <thead class="thead-light">
           <tr>
-            <td><%= link_to detail.created_at %></td>   <!-- 購入日時のちに注文履歴詳細リンクにする -->
-            <td><%= @customer.name %></td>  <!-- 購入者名 -->
-            <td><%= detail.amount %></td>  <!-- 注文個数 -->
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>ステータス</th>
           </tr>
+        </thead>
+        <tbody>
+          <% @orders.reverse_each do |order| %>
+            <tr>
+              <td>
+                <%=link_to edit_admin_order_path(order.id) do %>
+                  <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+                <% end %>
+              </td>
+              <td><%= order.customer.full_name %></td>
+              <td><%= order.order_details.sum(:amount) %></td>
+              <th><%= order.status_i18n %></th>
+            </tr>
+          <% end %>
         </tbody>
-      <% end %>
-      <%= paginate @os, class: "paginate" %>  <!-- ページネーション -->
-    </table>
+      </table>
+    </div>
   </div>
 </div>

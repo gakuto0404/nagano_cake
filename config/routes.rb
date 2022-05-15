@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   end
 
   get 'items' => 'public/items#index'
-  get 'items/:id' => 'public/items#show'
+  get 'items/:id' => 'public/items#show', as: 'item/:id'
 
   namespace :public do
     get 'customers/quit'
@@ -63,9 +63,6 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-
-  #root to: "homes#top"
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

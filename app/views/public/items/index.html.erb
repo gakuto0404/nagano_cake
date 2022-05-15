@@ -22,7 +22,7 @@
         <% @items.reverse_each do |item| %>
           <div class="col-md-3">
             <div class="card mb-4">
-              <%= link_to public_item_path(item.id) do %>
+              <%= link_to item_path(item.id) do %>
                 <%= image_tag item.get_profile_image(200, 200) %>
               <% end %>
               <div class="body">

@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class='mx-auto col-md-12 mt-3'>
-      <%= form_with model: @address, url: public_addresses_path(@address) do |f| %>
+      <%= form_with model: @address, url: addresses_path(@address) do |f| %>
       <!-- エラーメッセージを出したい　例:render "public/shared/error_messages", resource: resource -->
 
         <!--郵便番号-->

@@ -34,7 +34,7 @@
         </div>
       </div>
       <% if @item.is_active == true %>
-        <%= form_with model: @cart_item, url: public_cart_items_path, local: true do |f| %>
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
           <div class="row">
             <div class="col">

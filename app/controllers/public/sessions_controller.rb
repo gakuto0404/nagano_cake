@@ -21,8 +21,10 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   def reject_customer
+    #ログイン時に入力された名前に対応するユーザーが存在するかサーチ
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
+      #入力されたパスワードが正しいこと      ＠customerのactive_for_authentication?メソッドがtrueであるかどうか
       if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
         redirect_to new_customer_registration
       end

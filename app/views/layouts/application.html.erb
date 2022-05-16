@@ -26,34 +26,34 @@
           <% end %>
         </nav>
         <% if customer_signed_in? %>
-          <%#= link_to _path do%>
+          <%= link_to public_customer_path(current_customer.id) do%>
             <div class="btn btn-outline-dark mr-4">マイページ</div>
-          <%# end %>
+          <% end %>
           <%= link_to items_path do%>
             <div class="btn btn-outline-dark mr-4">商品一覧</div>
           <% end %>
-          <%#= link_to _path do%>
+          <%= link_to public_cart_items_path do%>
             <div class="btn btn-outline-dark mr-4">カート</div>
-          <%# end %>
+          <% end %>
           <%= link_to destroy_customer_session_path, method: :delete do%>
             <div class="btn btn-outline-dark mr-4">ログアウト</div>
           <% end %>
-        <!--<%# elsif admin_signed_in? %>
-          <%#= link_to _path do %>
+        <%# elsif admin_signed_in? %>
+          <%= link_to admin_items_path do %>
             <div class="btn btn-outline-dark mr-4">商品一覧</div>
-          <%# end %>
-          <%#= link_to _path do%>
+          <% end %>
+          <%= link_to admin_customers_path do%>
             <div class="btn btn-outline-dark mr-4">会員一覧</div>
-          <%# end %>
-          <%#= link_to _path do%>
+          <% end %>
+          <%= link_to admin_homes_top_path do%>
             <div class="btn btn-outline-dark mr-4">注文履歴一覧</div>
-          <%# end %>
-          <%#= link_to _path do%>
+          <% end %>
+          <%= link_to admin_genres_path do%>
             <div class="btn btn-outline-dark mr-4">ジャンル一覧</div>
-          <%# end %>
-          <%#= link_to destroy_admin_session_path, method: :delete do%>
+          <% end %>
+          <%= link_to destroy_admin_session_path, method: :delete do%>
             <div class="btn btn-outline-dark mr-4">ログアウト</div>
-          <%# end %>-->
+          <% end %>
         <% else %>
           <%= link_to homes_about_path do %>
             <div class="btn btn-outline-dark mr-4">About</div>
@@ -73,15 +73,5 @@
     <main>
       <%= yield %>
     </main>
-    <footer>
-      <div class="border mt-4"></div>
-      <div class="container mt-4">
-        <div class="row">
-          <div class="mx-auto">
-            <p class="footer-content">©gakuro.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>

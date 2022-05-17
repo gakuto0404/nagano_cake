@@ -5,14 +5,17 @@ class Item < ApplicationRecord
 
   belongs_to :genre
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
+  validates :genre_id, presence: true
+
   has_one_attached :profile_image
   validates :is_active, inclusion: { in: [true, false] }
 
   def with_tax_price
     (price * 1.1).floor
   end
-
-
 
   def get_profile_image(width, height)
     unless profile_image.attached?

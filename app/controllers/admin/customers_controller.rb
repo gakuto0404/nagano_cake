@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
-  #顧客側をやらないと進めない気がする
+  before_action :authenticate_admin!
+
   def index
     @customers = Customer.page(params[:page])
   end

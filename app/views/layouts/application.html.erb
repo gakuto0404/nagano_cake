@@ -38,7 +38,7 @@
           <%= link_to destroy_customer_session_path, method: :delete do%>
             <div class="btn btn-outline-dark mr-4">ログアウト</div>
           <% end %>
-        <%# elsif admin_signed_in? %>
+        <% elsif admin_signed_in? %>
           <%= link_to admin_items_path do %>
             <div class="btn btn-outline-dark mr-4">商品一覧</div>
           <% end %>

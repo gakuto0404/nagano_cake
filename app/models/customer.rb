@@ -8,6 +8,15 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :addresses
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true
+  validates :email, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :telephone_number, presence: true
+
   # is_activeがtrueならfalseを返すようにしている
   def active_for_authentication?
     super && (is_active == true)

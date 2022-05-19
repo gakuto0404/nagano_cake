@@ -62,7 +62,8 @@ Rails.application.routes.draw do
   # 論理削除用のルーティング
   patch 'customers/:id/withdrawal' => 'public/customers#withdrawal', as: 'public_withdrawal'
   get 'customers/:id/edit' => 'public/customers#edit', as: 'edit_public_customer'
-  get 'customers/:id' => 'public/customers#show', as: 'public_customer'
+  patch 'customers/:id' => 'public/customers#update', as: 'public_customer'
+  get 'customers/:id' => 'public/customers#show'
 
   get 'homes/about' => 'public/homes#about'
   root to: 'public/homes#top'

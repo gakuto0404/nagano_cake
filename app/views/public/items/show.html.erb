@@ -24,7 +24,7 @@
       <h5 class="mt-4"><strong><%= @item.introduction %></strong></h5>
       <div class="row mt-5">
         <h3><strong>￥<%= @item.price.to_s(:delimited) %></strong></h3>
-        <div class="mt-2 ml-2">(税込)</div>
+        <div class="mt-2 ml-2">(税抜)</div>
         <div class="mt-2">
           <% if @item.is_active == true %>  <!-- if文でのステータス表示 -->
             <h5><font color=#32cd32><strong class="ml-2">販売中</strong></font></h5>

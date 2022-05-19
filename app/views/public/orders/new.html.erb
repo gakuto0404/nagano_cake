@@ -38,7 +38,8 @@
         <%= f.radio_button :address_select, 1 %>
         <%= f.label "登録済住所から選択" %>
         <div class="mx-auto col-md-11">
-          <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address) %>
+          <%#= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
+          <%= f.select :address_id, @addresses.map{ |address| ['〒' + address.postal_code + ' ' + address.address + ' ' + address.name, address.id]} %>
         </div>
       </div>
     </div>

@@ -2,12 +2,13 @@ class Order < ApplicationRecord
 
   belongs_to :customer
   has_many :order_details
-  
+
   validates :customer_id, presence: :true
   validates :postal_code, presence: :true
   validates :address, presence: :true
   validates :name, presence: :true
   validates :shipping_cost, presence: :true
+
 
   def owner_address
     '〒' + self.postal_code.to_s.insert(3, "-") + ' ' + self.address
@@ -16,7 +17,7 @@ class Order < ApplicationRecord
   def subtotal
     itme.add_tax_price * amount
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end
